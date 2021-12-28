@@ -11,7 +11,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t matanbedani/projectjenkins:latest .'
+				sh 'docker build -t ${params.appversion}'
 			}
 		}
 
@@ -25,7 +25,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push matanbedani/projectjenkins:latest'
+				sh 'docker push ${params.appversion}'
 			}
 		}
 	}

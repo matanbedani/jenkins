@@ -3,7 +3,7 @@ pipeline{
 	agent any
 
 	environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-raja')
+		DOCKERHUB_CREDENTIALS=credentials('docker')
 	}
 
 	stages {
@@ -25,7 +25,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push bharathirajatut/nodeapp:latest'
+				sh 'docker push matanbedani/projectjenkins:latest'
 			}
 		}
 	}

@@ -15,6 +15,13 @@ pipeline{
 			}
 		}
 
+		stage('Pull') {
+
+			steps {
+				sh 'docker pull ${params.version}'
+			}
+		}
+		
 		stage('Login') {
 
 			steps {

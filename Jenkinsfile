@@ -11,7 +11,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t ${params.appversion}'
+				sh 'docker build -t ${params.version}'
 			}
 		}
 
@@ -25,7 +25,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push ${params.appversion}'
+				sh 'docker push ${params.version}'
 			}
 		}
 	}

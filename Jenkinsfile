@@ -1,38 +1,30 @@
 pipeline{
 
+        environment {
+          registry = "matanbedani/docker-test"
+          registryCredential = ‘dockerid’
+  }
+
 	agent any
 
-	environment {
-		DOCKERHUB_CREDENTIALS=credentials('docker')
-	}
-
-	stages {
-
-		stage('Build') {
+		stage('Pull') {
 
 			steps {
-				sh 'docker build -t ${params.version}'
+				sh 'docker pull nginx:latest'
 			}
 		}
 
 		stage('Pull') {
 
 			steps {
-				sh 'docker pull ${params.version}'
+				sh 'docker build -t nginx:latest1'
 			}
 		}
-		
-		stage('Login') {
-
-			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
-
+				
 		stage('Push') {
 
 			steps {
-				sh 'docker push ${params.version}'
+				sh 'docker push nginx:latest'
 			}
 		}
 	}
